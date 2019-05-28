@@ -1,14 +1,34 @@
 import glob, os
+
+import csv
+
 import moviepy.editor as mp
+
 import speech_recognition as sr
+
+import pandas as pd
+
+
+
+
 
 
 
 
 
 def lolol(file):
-    import moviepy.editor as mp
+
+
+
     clip=mp.VideoFileClip(file)
+
+
+
+
+
+
+
+     #Extracting audio from the video
 
     (clip.subclip(0,min(60,clip.duration))).audio.write_audiofile("chunk1.wav")
 
@@ -21,6 +41,11 @@ def lolol(file):
         (clip.subclip(118, min(178,clip.duration))).audio.write_audiofile("chunk3.wav")
 
 
+
+
+
+
+    print("\nGrabbing text from the audio")
 
 
 
@@ -52,9 +77,45 @@ def lolol(file):
 
     fh.close()
 
+    print("\nText grab is complete")
 
 
-os.chdir(r"C:\Users\Shrutika.Parab\Documents\Visual Studio 2015\Projects\candidate\candidate\candidate videos")
+
+
+
+    return
+
+
+
+
+
+
+
+
+
+os.chdir(path)
+
+
+import csv
+
+def top_of_csv():
+    with open('to_read.csv', 'r') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            print(row)
+            return row
+
+os.chdir(path)
 for file in glob.glob("*.mp4"):
     print(file)
     lolol(file);
+
+#file = top_of_csv()
+
+df = pd.read_csv('to_read.csv', index_col=0) temp = df.head(1)
+
+print("\n" + file + " is being processed") lolol(file);
+
+
+
+print("\nAll videos are processed.")
